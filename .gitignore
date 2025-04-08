@@ -1,0 +1,16 @@
+# Node.js
+frontend/node_modules/
+
+# Python
+backend/__pycache__/
+backend/venv/
+
+# Environment files
+.env
+
+# IDE config
+.idea/
+.vscode/
+
+# Logs
+*.log
