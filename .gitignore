@@ -6,7 +6,7 @@ backend/__pycache__/
 backend/venv/
 
 # Environment files
-
+.env
 
 # IDE config
 .idea/
