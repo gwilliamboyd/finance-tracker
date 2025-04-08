@@ -5,6 +5,9 @@ frontend/node_modules/
 backend/__pycache__/
 backend/venv/
 
+# Environment variables
+.env
+
 # IDE config
 .idea/
 .vscode/
