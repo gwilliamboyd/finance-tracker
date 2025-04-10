@@ -10,3 +10,9 @@ class User(SQLModel, table=True):
     email: str = Field(index=True, unique=True)
     hashed_password: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    def verify_password(self, password: str) -> bool:
+        return bcrypt.verify(password, self.hashed_password)
+    
+    def set_password(self, password: str):
+        self.hashed_password = bcrypt.hash(password)
