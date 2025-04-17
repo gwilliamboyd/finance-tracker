@@ -5,8 +5,10 @@ import os
 
 # routes
 from routes.post.user import router as users_router
+from routes.post.budget import router as budgets_router
 
 app = FastAPI()
 
 # call routers
 app.include_router(users_router, prefix='/users')
+app.include_router(budgets_router, prefix='/budgets')
