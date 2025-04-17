@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
-from app.main import engine
+from app.db import engine
 
 from logging.config import fileConfig
 
@@ -13,6 +13,7 @@ from alembic import context
 
 from models.user import SQLModel
 from models.user import User
+from models.budget import Budget
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

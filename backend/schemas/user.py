@@ -1,6 +1,8 @@
 from sqlmodel import SQLModel
 from pydantic import BaseModel
 from datetime import datetime
+from schemas.budget import BudgetRead
+from typing import List
 
 class UserCreate(BaseModel):
     username: str
@@ -11,6 +13,7 @@ class UserRead(SQLModel):
     id: str
     username: str
     email: str
+    budgets: List[BudgetRead] = []
     created_at: datetime
 
     class Config:

@@ -1,6 +1,6 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from passlib.hash import bcrypt
 import uuid
 
@@ -10,6 +10,8 @@ class User(SQLModel, table=True):
     email: str = Field(index=True, unique=True)
     hashed_password: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    budgets: List['Budget'] = Relationship(back_populates='user')
 
     def verify_password(self, password: str) -> bool:
         return bcrypt.verify(password, self.hashed_password)
