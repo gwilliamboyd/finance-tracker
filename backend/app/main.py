@@ -1,9 +1,12 @@
-from sqlmodel import SQLModel, create_engine
-from dotenv import load_dotenv
+# config
+from fastapi import FastAPI
+from sqlmodel import SQLModel, Session, create_engine
 import os
 
-load_dotenv()
+# routes
+from routes.post.user import router as users_router
 
-DATABASE_URL = os.getenv('PG_CONN_STR')
+app = FastAPI()
 
-engine = create_engine(DATABASE_URL)
+# call routers
+app.include_router(users_router, prefix='/users')
