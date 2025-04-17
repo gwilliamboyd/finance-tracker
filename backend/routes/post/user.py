@@ -4,7 +4,7 @@ from app.db import get_session
 from schemas.user import UserCreate
 from sqlmodel import Session, select
 from models.user import User
-from models.budget import Budget
+# from models.budget import Budget
 from schemas.user import UserRead
 import uuid
 from datetime import datetime

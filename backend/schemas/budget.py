@@ -2,11 +2,13 @@ from sqlmodel import SQLModel
 from pydantic import BaseModel
 from datetime import datetime
 from models.user import User
+from typing import Optional
 
 class BudgetCreate(BaseModel):
-    username: str
-    email: str
-    password: str
+    name: str
+    amount: float
+    created_at: Optional[datetime] = None
+    user_id: str
 
 class BudgetRead(SQLModel):
     id: str
