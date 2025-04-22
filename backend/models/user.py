@@ -2,6 +2,7 @@ from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
 from typing import Optional, List
 from passlib.hash import bcrypt
+from passlib.context import CryptContext
 import uuid
 
 class User(SQLModel, table=True):
@@ -18,3 +19,7 @@ class User(SQLModel, table=True):
     
     def set_password(self, password: str):
         self.hashed_password = bcrypt.hash(password)
+
+    def get_password_hash(self, password):
+        pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
+        return pwd_context.hash(password)
