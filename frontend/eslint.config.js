@@ -1,5 +1,5 @@
 import js from '@eslint/js'
-import globals from 'globals'
+import globals, { browser } from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
@@ -28,6 +28,10 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+    },
+    env: {
+      browser: true,
+      node: true,
     },
   },
 ]

@@ -14,15 +14,17 @@ const UsersList = React.memo(({ users }) => (
 
 // component
 function App() {
+  const serverConnUrl = import.meta.env.VITE_SERVER_CONN_URL
   // users state
   const [users, setUsers] = useState([])
   const [hasError, setHasError] = useState(false)
+  console.log(serverConnUrl)
 
   // fetch users on mount
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:8000/users')
+        const response = await fetch(`${serverConnUrl}/users/`)
         const users = await response.json()
         setUsers(users)
         return users
@@ -32,7 +34,7 @@ function App() {
       }
     }
     fetchUsers()
-  }, [])
+  }, [serverConnUrl])
 
   return (
     <>
