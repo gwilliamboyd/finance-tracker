@@ -1,9 +1,17 @@
-from sqlmodel import SQLModel, Field, Relationship
+# avoid circular imports
+from __future__ import annotations
+# python imports
+import uuid
+from typing import List, TYPE_CHECKING
 from datetime import datetime
-from typing import Optional, List
+# sqlmodel imports
+from sqlmodel import SQLModel, Field, Relationship
+# password hash
 from passlib.hash import bcrypt
 from passlib.context import CryptContext
-import uuid
+
+if TYPE_CHECKING:
+    from models.budget import Budget
 
 class User(SQLModel, table=True):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()), primary_key=True)

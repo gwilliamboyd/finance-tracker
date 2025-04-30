@@ -1,8 +1,14 @@
-from sqlmodel import SQLModel, Field, Relationship
-from models.user import User
+# avoid circular imports
+from __future__ import annotations
+# python imports
 from datetime import datetime
 import uuid
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
+# sqlmodel imports
+from sqlmodel import SQLModel, Field, Relationship
+
+if TYPE_CHECKING:
+    from models.user import User
 
 class Budget(SQLModel, table=True):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()), primary_key=True)
